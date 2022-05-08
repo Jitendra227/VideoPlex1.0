@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VideoPlex1.0</string>
+    <string name="tb_text">VideoPlex Player</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_library">Library</string>
+</resources>

@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "VideoPlex1.0"

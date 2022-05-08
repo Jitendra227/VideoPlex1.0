@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vid_lst_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/vid_lst_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:src="@color/teal_200"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_icon"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="5dp"
+            app:tint="@color/white" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/vid_lst_name"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textSize="18sp"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textAlignment="textStart"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:padding="4dp"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:scrollHorizontally="true"-->
+        <!--            android:ellipsize="marquee"-->
+        <!--            android:marqueeRepeatLimit="marquee_forever" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/vid_lst_duration"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="00:00:00"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            android:layout_marginBottom="16dp"-->
+        <!--            android:textSize="12sp"-->
+        <!--            android:textAlignment="viewEnd"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:fontFamily="sans-serif"-->
+        <!--            />-->
+
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
