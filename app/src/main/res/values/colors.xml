@@ -8,7 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="dark_grey2.0">#252323</color>
+    <color name="dark_grey_200">#252323</color>
+    <color name="dark_gray_100">#252525</color>
     <color name="dark_grey">#2D2C2C</color>
     <color name="dark_blue">#2C0C59</color>
     <color name="red">#D50000</color>
