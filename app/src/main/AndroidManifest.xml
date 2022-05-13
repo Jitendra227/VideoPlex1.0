@@ -17,7 +17,8 @@
         android:theme="@style/Theme.VideoPlex10">
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".PlayerActivity" />
+        <activity android:name=".PlayerActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".VideoPlayerActivity" />
         <activity android:name=".SplashScreenActivity"
             android:theme="@style/SplashTheme.VideoPlex10">

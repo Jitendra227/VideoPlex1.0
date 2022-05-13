@@ -3,6 +3,7 @@ package com.jitendra.videoplex10.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.exoplayer2.ui.PlayerView;
 import com.jitendra.videoplex10.Model.DeviceMediaFiles;
+import com.jitendra.videoplex10.PlayerActivity;
 import com.jitendra.videoplex10.R;
 import com.jitendra.videoplex10.VideoPlayerActivity;
 
@@ -60,7 +63,12 @@ public class DeviceMFilesAdapter extends RecyclerView.Adapter<DeviceMFilesAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, VideoPlayerActivity.class);
+                Intent intent = new Intent(context, PlayerActivity.class);
+                intent.putExtra("position", position);
+                intent.putExtra("video_title", mediaFilesList.get(position).getvDisplayName());
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("videoArrayList", mediaFilesList);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }

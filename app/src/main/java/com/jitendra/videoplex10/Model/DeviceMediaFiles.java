@@ -1,6 +1,9 @@
 package com.jitendra.videoplex10.Model;
 
-public class DeviceMediaFiles {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DeviceMediaFiles implements Parcelable {
     private String vId, vTitle, vDisplayName, vSize, vDuration, vPath, vDateAdded;
 
     public DeviceMediaFiles(String vId, String vTitle, String vDisplayName, String vSize, String vDuration, String vPath, String vDateAdded) {
@@ -12,6 +15,28 @@ public class DeviceMediaFiles {
         this.vPath = vPath;
         this.vDateAdded = vDateAdded;
     }
+
+    protected DeviceMediaFiles(Parcel in) {
+        vId = in.readString();
+        vTitle = in.readString();
+        vDisplayName = in.readString();
+        vSize = in.readString();
+        vDuration = in.readString();
+        vPath = in.readString();
+        vDateAdded = in.readString();
+    }
+
+    public static final Creator<DeviceMediaFiles> CREATOR = new Creator<DeviceMediaFiles>() {
+        @Override
+        public DeviceMediaFiles createFromParcel(Parcel in) {
+            return new DeviceMediaFiles(in);
+        }
+
+        @Override
+        public DeviceMediaFiles[] newArray(int size) {
+            return new DeviceMediaFiles[size];
+        }
+    };
 
     public String getvId() {
         return vId;
@@ -67,5 +92,21 @@ public class DeviceMediaFiles {
 
     public void setvDateAdded(String vDateAdded) {
         this.vDateAdded = vDateAdded;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(vId);
+        dest.writeString(vTitle);
+        dest.writeString(vDisplayName);
+        dest.writeString(vSize);
+        dest.writeString(vDuration);
+        dest.writeString(vPath);
+        dest.writeString(vDateAdded);
     }
 }

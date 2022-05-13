@@ -26,7 +26,7 @@ import com.jitendra.videoplex10.Model.DeviceVideoItems;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DeviceVideoAdapter.VideoItemClickListener {
+public class MainActivity extends AppCompatActivity  {
 
     private RecyclerView recyclerView;
 //    private ArrayList<DeviceVideoItems> videoItemsArrayList;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements DeviceVideoAdapte
     private DeviceMFilesAdapter deviceMFilesAdapter;
     //------------------------------------------------
 
-    private DeviceVideoAdapter deviceVideoAdapter;
+    //private DeviceVideoAdapter deviceVideoAdapter;
     private static final int STORAGE_PERMISSION = 123;
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements DeviceVideoAdapte
         //videoItemsArrayList = new ArrayList<>();
         //deviceVideoAdapter = new DeviceVideoAdapter(this, videoItemsArrayList, this::onVideoClick);
 
-        recyclerView.setAdapter(deviceVideoAdapter);
+        recyclerView.setAdapter(deviceMFilesAdapter);
 
         if (checkAndRequestPermission()) {
             //showVideos();
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements DeviceVideoAdapte
                 //videoItemsArrayList.add(new DeviceVideoItems(videoTitle, videoPath, videoThumb));
             }while(cursor.moveToNext());
         }
-        deviceVideoAdapter.notifyDataSetChanged();
+        //deviceVideoAdapter.notifyDataSetChanged();
     }
 
     private boolean checkAndRequestPermission() {
@@ -131,11 +131,11 @@ public class MainActivity extends AppCompatActivity implements DeviceVideoAdapte
         return true;
     }
 
-    @Override
-    public void onVideoClick(int pos) {
-        Intent intent = new Intent(MainActivity.this, VideoPlayerActivity.class);
-//        intent.putExtra("vidName", videoItemsArrayList.get(pos).getVidName());
-//        intent.putExtra("vidPath", videoItemsArrayList.get(pos).getVidPath());
-        startActivity(intent);
-    }
+//    @Override
+//    public void onVideoClick(int pos) {
+//        Intent intent = new Intent(MainActivity.this, VideoPlayerActivity.class);
+////        intent.putExtra("vidName", videoItemsArrayList.get(pos).getVidName());
+////        intent.putExtra("vidPath", videoItemsArrayList.get(pos).getVidPath());
+//        startActivity(intent);
+//    }
 }
