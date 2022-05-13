@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:layout_margin="4dp"
+    android:padding="7dp"
+    android:layout_margin="3dp"
     android:background="?attr/selectableItemBackgroundBorderless">
 
     <androidx.cardview.widget.CardView
@@ -48,7 +48,9 @@
         android:layout_toEndOf="@id/vid_lst_cardView"
         android:layout_toLeftOf="@id/vid_lst_menu_more"
         android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_toStartOf="@id/vid_lst_menu_more"
+        android:layout_marginStart="10dp"
+        >
 
         <TextView
             android:id="@+id/vid_lst_videoName"
@@ -56,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="video name"
             android:textColor="@color/white"
-            android:maxLines="2"
+            android:maxLines="1"
             android:layout_marginBottom="5dp"
             android:ellipsize="end" />
 
@@ -75,7 +77,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:foregroundTint="@color/dark_gray_100"
-        android:layout_marginTop="5dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_more_vert_icon"
         />

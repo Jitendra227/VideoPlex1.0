@@ -29,31 +29,31 @@ public class VideoPlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_player);
+//        setContentView(R.layout.activity_video_player);
 
         videoName = getIntent().getStringExtra("vidName");
         videoPath = getIntent().getStringExtra("vidPath");
 
         //init
-        videoTitleCTV = findViewById(R.id.custom_tv_title);
-        videoTimeCTV = findViewById(R.id.custom_tv_time);
-        backwardImg = findViewById(R.id.custom_iv_backward);
-        playPauseImg = findViewById(R.id.custom_iv_play);
-        forwardImg = findViewById(R.id.custom_iv_forward);
-        seekBar = findViewById(R.id.custom_seekBar);
-        videoView = findViewById(R.id.vidPlayer_vv_video);
-        customRL = findViewById(R.id.custom_control_layout_rl);
-        videoPyRL = findViewById(R.id.vidPlayer_rl);
-
-
-        videoView.setVideoURI(Uri.parse(videoPath));
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                seekBar.setMax(videoView.getDuration());
-                videoView.start();
-            }
-        });
+//        videoTitleCTV = findViewById(R.id.custom_tv_title);
+//        videoTimeCTV = findViewById(R.id.custom_tv_time);
+//        backwardImg = findViewById(R.id.custom_iv_backward);
+//        playPauseImg = findViewById(R.id.custom_iv_play);
+//        forwardImg = findViewById(R.id.custom_iv_forward);
+//        seekBar = findViewById(R.id.custom_seekBar);
+//        videoView = findViewById(R.id.vidPlayer_vv_video);
+//        customRL = findViewById(R.id.custom_control_layout_rl);
+//        videoPyRL = findViewById(R.id.vidPlayer_rl);
+//
+//
+//        videoView.setVideoURI(Uri.parse(videoPath));
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                seekBar.setMax(videoView.getDuration());
+//                videoView.start();
+//            }
+//        });
 
         videoTitleCTV.setText(videoPath);
         backwardImg.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +69,11 @@ public class VideoPlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(videoView.isPlaying()){
                     videoView.pause();
-                    playPauseImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_icon));
-                }
-                else{
-                    videoView.start();
-                    playPauseImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_icon));
+//                    playPauseImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_icon));
+//                }
+//                else{
+//                    videoView.start();
+//                    playPauseImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_icon));
                 }
             }
         });

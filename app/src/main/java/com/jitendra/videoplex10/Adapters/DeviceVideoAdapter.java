@@ -30,7 +30,6 @@ public class DeviceVideoAdapter extends RecyclerView.Adapter<DeviceVideoAdapter.
         this.clickListener = clickListener;
     }
 
-
     @NonNull
     @Override
     public DeviceVideoAdapter.VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
