@@ -83,13 +83,16 @@
 
             <com.google.android.exoplayer2.ui.DefaultTimeBar
                 android:id="@+id/exo_progress_time"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/exo_duration"
                 android:layout_toEndOf="@id/exo_position"
-                app:played_color="@color/purple_700"
-                app:scrubber_drawable="@drawable/seekbar_thumb" />
+                app:played_color="@color/red"
+                app:buffered_color="#D9D5D5"
+                app:scrubber_color="@color/red"
+                app:unplayed_color="@color/white"
+                />
 
         </RelativeLayout>
 

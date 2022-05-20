@@ -8,6 +8,11 @@
         android:icon="@drawable/ic_home" />
 
     <item
+        android:id="@+id/stream_icon"
+        android:title="@string/title_stream"
+        android:icon="@drawable/ic_stream_icon" />
+
+    <item
         android:id="@+id/search_icon"
         android:title="@string/title_search"
         android:icon="@drawable/ic_search_icon" />

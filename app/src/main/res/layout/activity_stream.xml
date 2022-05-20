@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StreamActivity">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/you_tube_Play"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="4dp"
+        />
+
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/you_tube_Play"
+        android:layout_centerHorizontal="true"
+        android:text="Play Video"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"/>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        app:menu="@menu/bottom_nav_bar"
+        android:background="@color/dark_grey"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:targetApi="p"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@color/bnv_icon_background"
+        app:itemTextColor="@color/bnv_icon_background"
+        />
+
+</RelativeLayout>

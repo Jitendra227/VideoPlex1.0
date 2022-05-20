@@ -4,6 +4,7 @@
     package="com.jitendra.videoplex10">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -15,12 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlex10">
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".PlayerActivity"
+        <activity android:name=".LibraryActivity"></activity>
+        <activity android:name=".StreamActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".VideoPlayerActivity" />
-        <activity android:name=".SplashScreenActivity"
+        <activity
+            android:name=".SplashScreenActivity"
             android:theme="@style/SplashTheme.VideoPlex10">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

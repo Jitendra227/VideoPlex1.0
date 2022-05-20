@@ -13,6 +13,7 @@
         android:background="@color/black"
         app:controller_layout_id="@layout/custom_playback_view"
         app:hide_on_touch="true"
+        app:auto_show="true"
         app:player_layout_id="@layout/exo_player_view"
         app:resize_mode="fit"
         app:show_timeout="4000"
