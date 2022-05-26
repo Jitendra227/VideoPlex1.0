@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
+    android:background="@color/perfect_dark_theme"
     android:orientation="vertical"
+    android:elevation="24dp"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ac_main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@color/dark_grey_200"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -44,12 +45,17 @@
         android:layout_above="@id/bottom_nav_bar"
         />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:background="#444343" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         app:menu="@menu/bottom_nav_bar"
-        android:background="@color/dark_grey"
+        android:background="@color/perfect_dark_theme"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"

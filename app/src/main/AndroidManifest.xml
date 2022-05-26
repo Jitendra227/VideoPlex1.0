@@ -17,11 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlex10">
         <activity android:name=".LibraryActivity"></activity>
-        <activity android:name=".StreamActivity" />
+
+        <activity android:name=".StreamActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"/>
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
+
         <activity android:name=".VideoPlayerActivity" />
         <activity
             android:name=".SplashScreenActivity"

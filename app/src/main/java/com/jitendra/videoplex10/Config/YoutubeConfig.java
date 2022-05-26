@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10.config;
+package com.jitendra.videoplex10.Config;
 
 public class YoutubeConfig {
 

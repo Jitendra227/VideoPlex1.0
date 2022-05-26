@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/click_animation.xml" value="0.11" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_library.xml" value="0.18" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_player.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.12" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/custom_playback_view.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_stream_data.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/menu/bottom_nav_bar.xml" value="0.31844660194174756" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
