@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -23,9 +22,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.jitendra.videoplex10.Adapters.DeviceMFilesAdapter;
-import com.jitendra.videoplex10.Adapters.DeviceVideoAdapter;
 import com.jitendra.videoplex10.Model.DeviceMediaFiles;
-import com.jitendra.videoplex10.Model.DeviceVideoItems;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -41,7 +41,7 @@ public class DeviceMFilesAdapter extends RecyclerView.Adapter<DeviceMFilesAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.vid_name.setText(mediaFilesList.get(position).getvDisplayName());
         String size = mediaFilesList.get(position).getvSize();
         holder.vid_size.setText(android.text.format.Formatter.formatFileSize(context,

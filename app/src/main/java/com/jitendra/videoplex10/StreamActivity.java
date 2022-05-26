@@ -2,6 +2,8 @@ package com.jitendra.videoplex10;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,49 +18,36 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.jitendra.videoplex10.Adapters.FetchYtDataAdapter;
 import com.jitendra.videoplex10.Config.YoutubeConfig;
+import com.jitendra.videoplex10.Model.YtMediaFiles;
+
+import java.util.ArrayList;
 
 public class StreamActivity extends YouTubeBaseActivity {
 
     private static final String TAG = "StreamActivity";
 
     BottomNavigationView bottomNavigationView;
-    //YouTubePlayerView youTubePlayerView;
-    Button playBtn;
-    //YouTubePlayer.OnInitializedListener mOnInitializedListener;
+    private RecyclerView recyclerView;
+    private ArrayList<YtMediaFiles> ytMediaFilesArrayList;
+    private FetchYtDataAdapter fetchYtDataAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stream);
         Log.d(TAG, "onCreate: Starting Video");
-//        playBtn = findViewById(R.id.play_btn);
-//        youTubePlayerView = findViewById(R.id.you_tube_Play);
 
-//        mOnInitializedListener = new YouTubePlayer.OnInitializedListener() {
-//            @Override
-//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-//                Log.d(TAG, "onClick: Done initializing");
-//                youTubePlayer.loadVideo("ULEQb_l-N08");
-//                youTubePlayer.play();
-//
-//
-//            }
-//
-//            @Override
-//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-//                Log.d(TAG, "onClick: Failed to initialize");
-//
-//            }
-//        };
-//
-//        playBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "onClick: Initializing video");
-//                youTubePlayerView.initialize(YoutubeConfig.getApiKey(), mOnInitializedListener);
-//
-//            }
-//        });
+        recyclerView  = findViewById(R.id.ac_stream_recyclerView);
+
+        ytMediaFilesArrayList= new ArrayList<>();
+
+        ytMediaFilesArrayList = loadDummy();
+        fetchYtDataAdapter = new FetchYtDataAdapter(this, ytMediaFilesArrayList);
+        recyclerView.setAdapter(fetchYtDataAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        fetchYtDataAdapter.notifyDataSetChanged();
 
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setSelectedItemId(R.id.stream_icon);
@@ -87,5 +76,15 @@ public class StreamActivity extends YouTubeBaseActivity {
                 return false;
             }
         });
+    }
+
+    private ArrayList<YtMediaFiles> loadDummy() {
+
+        ArrayList<YtMediaFiles> randomListData  = new ArrayList<>();
+        for(int i=0;i<20;i++) {
+            YtMediaFiles myList = new YtMediaFiles("1234", "hello", "Jit", "R.drawable.ic_home", "10:00", "R.drawable.ic_watch_later_icon");
+            randomListData.add(myList);
+        }
+        return randomListData;
     }
 }
