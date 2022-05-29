@@ -1,18 +1,27 @@
 package com.jitendra.videoplex10.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
-public class YtMediaFiles {
+public class YtMediaFiles implements Serializable{
+
+    @SerializedName("id")
     private String ytId;
 
+    @SerializedName("title")
     private String ytVidTitle;
 
+    @SerializedName("channel")
     private String ytChannel;
 
+    @SerializedName("thumbnails")
     private String ytThumbnail;
 
+    @SerializedName("duration")
     private String ytDuration;
 
+    @SerializedName("id")
     private String ytChannelIcon;
 
     public YtMediaFiles(String ytId, String ytVidTitle, String ytChannel, String ytThumbnail, String ytDuration, String ytChannelIcon) {

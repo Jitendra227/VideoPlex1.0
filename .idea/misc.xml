@@ -4,12 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/click_animation.xml" value="0.11" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/ic_exo_fullscreen_expand.xml" value="0.163" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/ic_rename_video.xml" value="0.163" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/ic_scrubber_icon.xml" value="0.116" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_library.xml" value="0.18" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_player.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.12" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/custom_playback_view.xml" value="0.1" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.1" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/custom_playback_view.xml" value="0.25" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_bottom_sheet.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.25" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_bottom_sheet.xml" value="0.19375" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_stream_data.xml" value="0.25" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/menu/bottom_nav_bar.xml" value="0.31844660194174756" />
       </map>

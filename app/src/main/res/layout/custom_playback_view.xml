@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,10 +14,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:visibility="visible"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/video_back"
@@ -30,12 +30,12 @@
                 android:id="@+id/video_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="Video Title"
                 android:textColor="@color/white"
-                android:layout_gravity="center"
                 android:textSize="18sp" />
 
             <ImageView
@@ -49,8 +49,8 @@
                 android:id="@+id/video_more"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_more_vert_icon"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_more_vert_icon" />
 
         </LinearLayout>
 
@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/bottom_icons"
+
             android:visibility="visible">
 
             <TextView
@@ -82,17 +83,17 @@
                 android:textColor="@color/white" />
 
             <com.google.android.exoplayer2.ui.DefaultTimeBar
-                android:id="@+id/exo_progress_time"
+                android:id="@+id/exo_progress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/exo_duration"
                 android:layout_toEndOf="@id/exo_position"
+                app:buffered_color="@color/white"
                 app:played_color="@color/red"
-                app:buffered_color="#D9D5D5"
-                app:scrubber_color="@color/red"
-                app:unplayed_color="@color/white"
-                />
+                app:scrubber_drawable="@drawable/ic_scrubber_icon"
+                app:scrubber_enabled_size="24dp"
+                app:unplayed_color="@color/dim_white" />
 
         </RelativeLayout>
 
@@ -114,14 +115,14 @@
                 android:src="@drawable/ic_exo_unlock_icon" />
 
             <ImageView
-                android:id="@+id/exo_rewind"
+                android:id="@+id/exo_rew"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_exo_rewind_10_icon" />
 
             <ImageView
-                android:id="@+id/exo_previous"
+                android:id="@+id/exo_prev"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
@@ -149,20 +150,22 @@
                 android:src="@drawable/ic_exo_skip_next_icon" />
 
             <ImageView
-                android:id="@+id/exo_forward"
+                android:id="@+id/exo_ffwd"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_exo_forward_10_icon" />
 
             <ImageView
-                android:id="@+id/exo_fitscreen"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:id="@+id/exo_fullscreen_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_exo_fitscreen_icon" />
-        </LinearLayout>
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_exo_fullscreen_expand"
+                android:background="?attr/selectableItemBackground"/>
 
+        </LinearLayout>
 
 
     </RelativeLayout>

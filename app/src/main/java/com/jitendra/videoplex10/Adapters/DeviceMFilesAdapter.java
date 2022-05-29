@@ -9,17 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.Model.DeviceMediaFiles;
 import com.jitendra.videoplex10.PlayerActivity;
 import com.jitendra.videoplex10.R;
-import com.jitendra.videoplex10.VideoPlayerActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,6 +25,7 @@ import java.util.ArrayList;
 public class DeviceMFilesAdapter extends RecyclerView.Adapter<DeviceMFilesAdapter.ViewHolder> {
     private Context context;
     private ArrayList<DeviceMediaFiles> mediaFilesList;
+    BottomSheetDialog bottomSheetDialog;
 
     public DeviceMFilesAdapter(Context context, ArrayList<DeviceMediaFiles> mediaFilesList) {
         this.context = context;
@@ -56,7 +55,19 @@ public class DeviceMFilesAdapter extends RecyclerView.Adapter<DeviceMFilesAdapte
         holder.vid_menuMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "show more menu", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetTheme);
+                View bsView = LayoutInflater.from(context).inflate(R.layout.device_bottom_sheet,
+                        v.findViewById(R.id.bottom_sheet_layout));
+
+                bsView.findViewById(R.id.ll_play_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.itemView.performClick();
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+                bottomSheetDialog.setContentView(bsView);
+                bottomSheetDialog.show();
             }
         });
 
