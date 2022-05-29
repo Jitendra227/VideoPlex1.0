@@ -1,29 +1,26 @@
 package com.jitendra.videoplex10.Adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.annotations.SerializedName;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.Model.YtMediaFiles;
 import com.jitendra.videoplex10.R;
 
-import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 
 public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.ViewHolder> {
     private Context context;
     private ArrayList<YtMediaFiles> ytMediaFilesList;
+    BottomSheetDialog bottomSheetDialog;
 
     public FetchYtDataAdapter(Context context, ArrayList<YtMediaFiles> ytMediaFilesList) {
         this.context = context;
@@ -53,7 +50,19 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
         holder.vid_menu_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "show more menu", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetTheme);
+                View bsView = LayoutInflater.from(context).inflate(R.layout.yt_bottom_sheet,
+                        v.findViewById(R.id.yt_bottom_sheet_layout));
+
+                bsView.findViewById(R.id.ll_play_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.itemView.performClick();
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+                bottomSheetDialog.setContentView(bsView);
+                bottomSheetDialog.show();
             }
         });
     }
