@@ -80,6 +80,7 @@
         android:layout_centerVertical="true"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:foregroundTint="@color/dark_gray_100"
-        android:src="@drawable/ic_more_vert_icon" />
+        android:src="@drawable/ic_more_vert_icon"
+        />
 
 </RelativeLayout>
