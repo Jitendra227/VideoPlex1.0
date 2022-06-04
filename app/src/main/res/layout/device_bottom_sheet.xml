@@ -39,13 +39,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_exo_play_icon"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Video"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             android:layout_marginStart="20dp"
             android:layout_gravity="center_vertical" />
@@ -71,7 +72,7 @@
             android:layout_height="wrap_content"
             android:text="Rename"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:layout_gravity="center_vertical" />
     </LinearLayout>
@@ -96,35 +97,11 @@
             android:layout_height="wrap_content"
             android:text="Share.."
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:layout_gravity="center_vertical" />
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_details_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:background="?attr/selectableItemBackground" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_vid_properties"
-            app:tint="@color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Details"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_marginStart="20dp"
-            android:layout_gravity="center_vertical" />
-    </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_delete_layout"
         android:layout_width="match_parent"
@@ -146,10 +123,34 @@
             android:layout_height="wrap_content"
             android:text="Delete"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:layout_gravity="center_vertical" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="?attr/selectableItemBackground" >
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_vid_properties"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
 </LinearLayout>
