@@ -1,7 +1,6 @@
 package com.jitendra.videoplex10;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,22 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.gson.Gson;
 import com.jitendra.videoplex10.Adapters.FetchYtDataAdapter;
-import com.jitendra.videoplex10.Config.YoutubeConfig;
-import com.jitendra.videoplex10.Model.YtMediaFiles;
+import com.jitendra.videoplex10.Model.YoutubeModel.SearchResponse;
+import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.Network.ApiCallInterface;
 import com.jitendra.videoplex10.Network.RetrofitClientInstance;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +45,7 @@ public class StreamActivity extends YouTubeBaseActivity {
     private RecyclerView recyclerView;
     private ArrayList<YtMediaFiles> ytMediaFilesArrayList;
     private FetchYtDataAdapter fetchYtDataAdapter;
-
+    String ytUrl = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=AIzaSyDdcgZZhCL09EkHNh3JmPAsocL_CePOCCQ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class StreamActivity extends YouTubeBaseActivity {
         ytMediaFilesArrayList= new ArrayList<>();
         //retrieveData();
 
-        ytMediaFilesArrayList = loadDummy();
+        retrieveYtData();
         fetchYtDataAdapter = new FetchYtDataAdapter(this, ytMediaFilesArrayList);
         recyclerView.setAdapter(fetchYtDataAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -90,6 +93,36 @@ public class StreamActivity extends YouTubeBaseActivity {
         });
     }
 
+    private void retrieveYtData(){
+        Toast.makeText(this, "Loading videos", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "retrieveYtData: started retrieving");
+        Call<SearchResponse> call = apiCallInterface.getAllVideos();
+        call.enqueue(new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                SearchResponse searchResponse = response.body();
+                if(searchResponse != null){
+                    if(searchResponse.items.size()>0){
+                        for(int i=0;i<4;i++){
+                            ytMediaFilesArrayList.add(searchResponse.items.get(i));
+                        }
+                        fetchYtDataAdapter.notifyDataSetChanged();
+                    }
+                }
+                else {
+                    Log.d(TAG, "onResponse: unable to find video");
+                    Toast.makeText(StreamActivity.this, "No video available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                Toast.makeText(StreamActivity.this, "An error has occurred!", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: Failed to load youtube videos");
+            }
+        });
+    }
+
     private void retrieveData() {
         Toast.makeText(this,"Fetching Data...",Toast.LENGTH_SHORT).show();
         Call<List<YtMediaFiles>> call = apiCallInterface.getPopularVideos();
@@ -107,10 +140,7 @@ public class StreamActivity extends YouTubeBaseActivity {
                 String data = gson.toJson(response.body());
                 ytMediaFilesArrayList.clear();
                 ytMediaFilesArrayList.addAll(response.body());
-//
-//                for(YtMediaFiles items: ytMediaFilesArrayList) {
-//
-//                }
+
             }
 
             @Override
@@ -126,8 +156,8 @@ public class StreamActivity extends YouTubeBaseActivity {
 
         ArrayList<YtMediaFiles> randomListData  = new ArrayList<>();
         for(int i=0;i<20;i++) {
-            YtMediaFiles myList = new YtMediaFiles("1234", "hello", "Jit", "R.drawable.ic_home", "10:00", "R.drawable.ic_watch_later_icon");
-            randomListData.add(myList);
+            //YtMediaFiles myList = new YtMediaFiles("1234", "hello", "Jit", "R.drawable.ic_home", "10:00", "R.drawable.ic_watch_later_icon");
+            //randomListData.add(myList);
         }
         return randomListData;
     }

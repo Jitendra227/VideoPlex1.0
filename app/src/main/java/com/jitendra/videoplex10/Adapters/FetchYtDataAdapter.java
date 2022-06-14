@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.jitendra.videoplex10.Model.YtMediaFiles;
+import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
+import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.ViewHolder> {
-    private Context context;
-    private ArrayList<YtMediaFiles> ytMediaFilesList;
+    Context context;
+    ArrayList<YtMediaFiles> ytMediaFilesList;
     BottomSheetDialog bottomSheetDialog;
 
     public FetchYtDataAdapter(Context context, ArrayList<YtMediaFiles> ytMediaFilesList) {
@@ -37,15 +39,36 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.vid_title.setText(ytMediaFilesList.get(position).getYtVidTitle());
-        holder.vid_channel_name.setText(ytMediaFilesList.get(position).getYtChannel());
-        holder.vid_duration.setText("10:00");
-//        Glide.with(context).load(Uri.parse(ytMediaFilesList.get(position).getYtChannelIcon()))
-//                .into(holder.vid_channel_icon);
+        YtMediaFiles videos = ytMediaFilesList.get(position);
+        if(videos!=null) {
+            holder.vid_title.setText(videos.snippet.title);
+            if(videos.snippet.thumbnail != null){
+                ThumbnailType thType = videos.snippet.thumbnail.high;
+                if (thType == null)
+                    thType = videos.snippet.thumbnail.medium;
+                if(thType == null)
+                    thType = videos.snippet.thumbnail.standard;
+
+                Glide.with(context).load(thType.thUrl)
+                        .into(holder.vid_thumb);
+            }
+
+            String fetchedTime = videos.contentDetails.duration;
+            fetchedTime = fetchedTime.substring(2);
+            char[] ch = fetchedTime.toCharArray();
+            for(int i=0;i<ch.length;i++){
+                if(ch[i]=='H' || ch[i]=='M')
+                    ch[i] = ':';
+            }
+            ch = Arrays.copyOfRange(ch,0,ch.length-1);
+            fetchedTime = new String(ch);
+
+            holder.vid_duration.setText(fetchedTime);
+            holder.vid_channel_name.setText(videos.snippet.channelTitle);
+        }
+
         Glide.with(context).load(R.drawable.ic_exo_play_icon)
                 .into(holder.vid_channel_icon);
-        Glide.with(context).load(R.drawable.one)
-                .into(holder.vid_thumb);
 
         holder.vid_menu_more.setOnClickListener(new View.OnClickListener() {
             @Override
