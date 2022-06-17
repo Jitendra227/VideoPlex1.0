@@ -13,7 +13,7 @@
     <color name="dark_gray_100">#252525</color>
     <color name="dark_grey">#2D2C2C</color>
     <color name="dark_blue">#2C0C59</color>
-    <color name="red">#D50000</color>
+    <color name="red">#FF0000</color>
     <color name="dim_white">#929090</color>
     <color name="ripple_color">#b0b7a3</color>
 </resources>

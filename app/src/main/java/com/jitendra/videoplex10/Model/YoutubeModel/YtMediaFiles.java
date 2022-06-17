@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class YtMediaFiles implements Serializable{
 
     @SerializedName("id")
-    public String ytId;
+    public String id;
 
     @SerializedName("snippet")
     public Snippet snippet;

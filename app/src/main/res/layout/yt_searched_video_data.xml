@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/yt_search_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/yt_search_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:requiresFadingEdge="horizontal"
+            android:scaleType="centerCrop"
+            android:src="@color/dark_grey" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/yt_stream_l_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yt_search_card_layout"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/yt_search_channel_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_watch_later_icon" />
+
+        <LinearLayout
+            android:id="@+id/yt_search_l_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/yt_search_vid_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="video name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/yt_search_channel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="channel name"
+                android:textColor="@color/dim_white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/yt_search_more_menu"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert_icon"
+            android:focusable="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -9,6 +9,12 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,16 +22,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlex10">
-        <activity android:name=".LibraryActivity"></activity>
-
-        <activity android:name=".StreamActivity"
-            android:configChanges="orientation|screenSize|layoutDirection"/>
-
+        <activity
+            android:name=".SearchYtVideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YtVidDetailActivity"
+            android:exported="false" />
+        <activity android:name=".LibraryActivity" />
+        <activity
+            android:name=".StreamActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
-
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/SplashTheme.VideoPlex10">
