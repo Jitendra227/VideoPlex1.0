@@ -3,21 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/search_view_bg.xml" value="0.1185" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/seekbar_thumb.xml" value="0.1185" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/splash_gradient_background.xml" value="0.1185" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_library.xml" value="0.18796296296296297" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_main.xml" value="0.1843100189035917" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_player.xml" value="0.18796296296296297" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_search_yt_videos.xml" value="0.16447368421052633" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.1675925925925926" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_yt_vid_detail.xml" value="0.18072289156626506" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.18796296296296297" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/fragment_history.xml" value="0.19375" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/fragment_search_videos.xml" value="0.19375" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/fragment_watch_later.xml" value="0.19375" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_searched_video_data.xml" value="0.1" />
-        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_stream_data.xml" value="0.18055555555555555" />
       </map>
     </option>
   </component>
