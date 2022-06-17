@@ -7,24 +7,83 @@
     android:background="@color/perfect_dark_theme"
     tools:context=".StreamActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ac_stream_toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/dark_grey_200"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true">
 
-        <androidx.appcompat.widget.SearchView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:textAlignment="center"
-            app:queryBackground="@color/white"
-            android:baselineAligned="true"
-            />
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/black"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
 
-    </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="0">
+
+                <TextView
+                    android:id="@+id/ac_main_toolbar_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="VideoPlex"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ac_main_toolbar_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text=" | "
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ac_main_toolbar_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="sans-serif"
+                    android:text="YouTube"
+                    android:textColor="@color/red"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ac_main_toolbar_search"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_search_icon" />
+
+                <ImageView
+                    android:id="@+id/ac_main_toolbar_setting"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_settings_icon" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ac_stream_recyclerView"
@@ -43,19 +102,18 @@
         android:layout_height="2dp"
         android:layout_above="@+id/bottom_nav_bar"
         android:background="#444343" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        app:menu="@menu/bottom_nav_bar"
-        android:background="@color/perfect_dark_theme"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        tools:targetApi="p"
+        android:layout_alignParentBottom="true"
+        android:background="@color/perfect_dark_theme"
         android:foreground="?attr/selectableItemBackground"
         app:itemIconTint="@color/bnv_icon_background"
         app:itemTextColor="@color/bnv_icon_background"
-        />
-
+        app:menu="@menu/bottom_nav_bar"
+        tools:targetApi="p" />
 </RelativeLayout>

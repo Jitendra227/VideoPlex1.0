@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:id="@+id/lib_recent_watch"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
@@ -29,64 +29,54 @@
             android:id="@+id/lib_horizontal_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="0"
             android:fillViewport="true"
             android:measureAllChildren="false"
             android:scrollbars="none">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/vid_lst_cardView"
-                android:layout_width="120dp"
-                android:layout_height="70dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:id="@+id/vid_lst_thumbnail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="2dp"
-                    android:background="@color/dark_grey"
-                    android:requiresFadingEdge="horizontal"
-                    android:scaleType="centerCrop"
-                    android:src="@color/teal_200" />
-
-                <TextView
-                    android:id="@+id/vid_lst_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:background="@color/dark_gray_100"
-                    android:padding="4dp"
-                    android:text="10:00"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-            </androidx.cardview.widget.CardView>
-
             <LinearLayout
-                android:id="@+id/vid_lst_linear1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/vid_lst_videoName"
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="2dp"
+                    android:scaleType="centerCrop"
+                    android:requiresFadingEdge="horizontal"
+                    android:layout_centerVertical="true"
+                    android:src="@color/teal_200"
+                    android:background="@color/dark_grey" />
+
+                <LinearLayout
+                    android:id="@+id/vid_lst_linear1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="video name"
-                    android:textColor="@color/white" />
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical"
+                    >
 
-                <TextView
-                    android:id="@+id/vid_lst_videoSize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="jitendra"
-                    android:textColor="#888888" />
+                    <TextView
+                        android:id="@+id/vid_lst_videoName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="video name"
+                        android:textColor="@color/white" />
 
+                    <TextView
+                        android:id="@+id/vid_lst_videoSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="jitendra"
+                        android:textColor="#888888" />
+
+                </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
@@ -97,29 +87,28 @@
         android:layout_height="1dp"
         android:layout_below="@id/lib_recent_watch"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="186dp"
         android:background="#444343" />
 
     <LinearLayout
         android:id="@+id/lib_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/linear_divider1"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/linear_divider1">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/history_box_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:padding="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="?attr/selectableItemBackground">
+            android:padding="4dp">
 
             <ImageView
                 android:id="@+id/iv_history"
@@ -127,17 +116,17 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:foregroundGravity="center"
-                android:src="@drawable/ic_history"/>
+                android:src="@drawable/ic_history" />
 
             <TextView
                 android:id="@+id/tv_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History"
-                android:layout_marginStart="24dp"
-                android:textSize="20sp"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/white"/>
+                android:layout_marginStart="24dp"
+                android:text="History"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -145,13 +134,13 @@
             android:id="@+id/watch_later_box_layout"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:padding="4dp"
             android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:background="?attr/selectableItemBackground"
-            android:focusable="true">
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
 
             <ImageView
                 android:id="@+id/iv_watch_later"
@@ -159,7 +148,7 @@
                 android:layout_height="33dp"
                 android:layout_gravity="center"
                 android:foregroundGravity="center"
-                android:src="@drawable/ic_watch_later_icon"/>
+                android:src="@drawable/ic_watch_later_icon" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -171,19 +160,19 @@
                     android:id="@+id/tv_watch_later"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Watch later"
-                    android:textSize="18sp"
                     android:layout_marginStart="28dp"
-                    android:textColor="@color/white"/>
+                    android:text="Watch later"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_unwatched"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100 unwatched videos"
-                    android:textSize="14sp"
                     android:layout_marginStart="28dp"
-                    android:textColor="@color/dim_white"/>
+                    android:text="100 unwatched videos"
+                    android:textColor="@color/dim_white"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -192,8 +181,8 @@
         android:id="@+id/linear_divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/lib_linear_layout"
+        android:layout_marginTop="10dp"
         android:background="#444343" />
 
 
@@ -201,21 +190,20 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_above="@+id/bottom_nav_bar"
-        android:background="#444343"
-        />
+        android:background="#444343" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        app:menu="@menu/bottom_nav_bar"
-        android:background="@color/perfect_dark_theme"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        tools:targetApi="p"
+        android:layout_alignParentBottom="true"
+        android:background="@color/perfect_dark_theme"
         android:foreground="?attr/selectableItemBackground"
         app:itemIconTint="@color/bnv_icon_background"
         app:itemTextColor="@color/bnv_icon_background"
-        />
+        app:menu="@menu/bottom_nav_bar"
+        tools:targetApi="p" />
 
 </RelativeLayout>

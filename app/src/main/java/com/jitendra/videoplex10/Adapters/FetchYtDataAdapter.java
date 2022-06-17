@@ -1,6 +1,8 @@
 package com.jitendra.videoplex10.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.R;
+import com.jitendra.videoplex10.YtVidDetailActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +26,8 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
     Context context;
     ArrayList<YtMediaFiles> ytMediaFilesList;
     BottomSheetDialog bottomSheetDialog;
+
+    public static final String TAG = "FetchYtDataAdapter";
 
     public FetchYtDataAdapter(Context context, ArrayList<YtMediaFiles> ytMediaFilesList) {
         this.context = context;
@@ -41,15 +46,16 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
 
         YtMediaFiles videos = ytMediaFilesList.get(position);
         if(videos!=null) {
+            String clickedId = videos.id;
             holder.vid_title.setText(videos.snippet.title);
-            if(videos.snippet.thumbnail != null){
-                ThumbnailType thType = videos.snippet.thumbnail.high;
+            if(videos.snippet.thumbnails != null){
+                ThumbnailType thType = videos.snippet.thumbnails.high;
                 if (thType == null)
-                    thType = videos.snippet.thumbnail.medium;
+                    thType = videos.snippet.thumbnails.medium;
                 if(thType == null)
-                    thType = videos.snippet.thumbnail.standard;
+                    thType = videos.snippet.thumbnails.standard;
 
-                Glide.with(context).load(thType.thUrl)
+                Glide.with(context).load(thType.url)
                         .into(holder.vid_thumb);
             }
 
@@ -99,6 +105,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
         ImageView vid_thumb, vid_channel_icon, vid_menu_more;
         TextView vid_title, vid_channel_name, vid_duration;
         public ViewHolder(@NonNull View itemView) {
+
             super(itemView);
             vid_thumb        = itemView.findViewById(R.id.yt_vid_thumbnail);
             vid_channel_icon = itemView.findViewById(R.id.yt_channel_icon);
@@ -106,6 +113,20 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
             vid_title        = itemView.findViewById(R.id.yt_vid_name);
             vid_channel_name = itemView.findViewById(R.id.yt_channel_name);
             vid_duration     = itemView.findViewById(R.id.yt_vid_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "onClick: sending video id->");
+                    YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(getAbsoluteAdapterPosition());
+                    Intent intent = new Intent(context, YtVidDetailActivity.class);
+                    intent.putExtra("videoId", ytMediaFilesObj.id);
+                    intent.putExtra("vidTitle",ytMediaFilesObj.snippet.title);
+                    intent.putExtra("channelName", ytMediaFilesObj.snippet.channelTitle);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
