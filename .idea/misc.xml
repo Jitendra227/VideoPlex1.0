@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/drawable/search_view_bg.xml" value="0.1185" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_library.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_main.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_player.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_search_yt_videos.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_splash_screen.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_watch_later.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_yt_vid_detail.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/watch_later_videos_list.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_searched_video_data.xml" value="0.1675925925925926" />
       </map>
     </option>
   </component>
