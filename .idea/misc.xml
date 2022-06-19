@@ -12,9 +12,14 @@
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_stream.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_watch_later.xml" value="0.19375" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/activity_yt_vid_detail.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/custom_playback_view.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/device_video_list.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/watch_later_videos_list.xml" value="0.19375" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_bottom_sheet.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_searched_video_data.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/layout/yt_stream_data.xml" value="0.16774791473586653" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/menu/bottom_nav_bar.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/jitendra mishra/AndroidStudioProjects/VideoPlex10/app/src/main/res/menu/video_menu.xml" value="0.1675925925925926" />
       </map>
     </option>
   </component>

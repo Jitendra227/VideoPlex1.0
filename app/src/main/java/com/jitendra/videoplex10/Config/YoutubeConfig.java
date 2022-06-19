@@ -8,7 +8,7 @@ public class YoutubeConfig {
     public static final String QUERY = "&q=";
     public static final String Type = "&type=video" ;
 
-    public static String API_KEY = "&key=AIzaSyDdcgZZhCL09EkHNh3JmPAsocL_CePOCCQ";
+    public static String KEY = "&key=AIzaSyDdcgZZhCL09EkHNh3JmPAsocL_CePOCCQ";
 
 
 }

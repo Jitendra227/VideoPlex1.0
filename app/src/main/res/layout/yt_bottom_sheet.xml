@@ -24,7 +24,7 @@
         android:layout_marginBottom="8dp"
         android:background="#444343" />
     <LinearLayout
-        android:id="@+id/ll_play_layout"
+        android:id="@+id/yt_ll_play_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_watchLater_layout"
+        android:id="@+id/yt_ll_watchLater_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -76,7 +76,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_share_layout"
+        android:id="@+id/yt_ll_share_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"

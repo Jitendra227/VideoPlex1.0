@@ -63,7 +63,7 @@ public class SearchYtVideosActivity extends AppCompatActivity {
 
     private void getSearchedVideo(String query) {
         String url = YoutubeConfig.SEARCH_BASE_URL + YoutubeConfig.sch + YoutubeConfig.mxResults +
-                YoutubeConfig.QUERY + query + YoutubeConfig.Type + YoutubeConfig.API_KEY;
+                YoutubeConfig.QUERY + query + YoutubeConfig.Type + YoutubeConfig.KEY;
         Log.d(TAG, "getSearchedVideo: started searching");
         Call<SearchResponse> call = apiCallInterface.getSearchedVideos(url);
         call.enqueue(new Callback<SearchResponse>() {

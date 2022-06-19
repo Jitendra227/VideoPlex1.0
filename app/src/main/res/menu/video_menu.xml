@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/playback_speed"
+        android:title="PlayBack"
+        />
+
+    <item
+        android:id="@+id/video_audio"
+        android:title="Audio"
+        />
+    <item
+        android:id="@+id/video_subtitles"
+        android:title="Subtitles" />
+    <item
+        android:id="@+id/video_volume"
+        android:title="Volume"
+        />
+    <item
+        android:id="@+id/video_brightness"
+        android:title="Brightness"
+        />
+
+</menu>
