@@ -1,21 +1,9 @@
 package com.google.android.youtube.player;
 
-import static com.jitendra.videoplex10.Config.YoutubeConfig.API_KEY;
+import static com.jitendra.videoplex10.Config.YoutubeConfig.KEY;
 
-import android.media.VolumeShaper;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.fragment.app.Fragment;
-
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-
-import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
-import com.jitendra.videoplex10.Config.YoutubeConfig;
-
-import java.util.Locale;
-import java.util.Objects;
 
 public class FragmentYtubePlayer extends YouTubePlayerSupportFragmentX
         implements YouTubePlayer.OnInitializedListener {
@@ -54,13 +42,13 @@ public class FragmentYtubePlayer extends YouTubePlayerSupportFragmentX
                 Log.d(TAG, "onCreate: "+e);
             }
         }
-        initialize(API_KEY,this);
+        initialize(KEY,this);
     }
 
     public void setVideoId(final String mVidId) {
         vidId = mVidId;
-        initialize(API_KEY,this);
-        Log.d(TAG, "setVideoId: "+ API_KEY);
+        initialize(KEY,this);
+        Log.d(TAG, "setVideoId: "+ KEY);
     }
 
     @Override

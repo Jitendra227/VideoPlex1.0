@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlex10">
         <activity
+            android:name=".WatchLaterActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchYtVideosActivity"
             android:exported="false" />
         <activity

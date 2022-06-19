@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.R;
+import com.jitendra.videoplex10.WatchLaterActivity;
 import com.jitendra.videoplex10.YtVidDetailActivity;
 
 import java.util.ArrayList;
@@ -83,13 +84,28 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
                 View bsView = LayoutInflater.from(context).inflate(R.layout.yt_bottom_sheet,
                         v.findViewById(R.id.yt_bottom_sheet_layout));
 
-                bsView.findViewById(R.id.ll_play_layout).setOnClickListener(new View.OnClickListener() {
+                bsView.findViewById(R.id.yt_ll_play_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         holder.itemView.performClick();
                         bottomSheetDialog.dismiss();
                     }
                 });
+
+                bsView.findViewById(R.id.yt_ll_watchLater_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(holder.getAbsoluteAdapterPosition());
+                        Intent intent = new Intent(context, WatchLaterActivity.class);
+                        intent.putExtra("vidId", ytMediaFilesObj.id);
+                        intent.putExtra("videoName", ytMediaFilesObj.snippet.title);
+                        intent.putExtra("vidThumb", ytMediaFilesObj.snippet.thumbnails.medium);
+                        intent.putExtra("vidChannel", ytMediaFilesObj.snippet.channelTitle);
+                        intent.putExtra("vidDuration", ytMediaFilesObj.contentDetails.duration);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    }
+                });
+
                 bottomSheetDialog.setContentView(bsView);
                 bottomSheetDialog.show();
             }
@@ -114,6 +130,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
             vid_channel_name = itemView.findViewById(R.id.yt_channel_name);
             vid_duration     = itemView.findViewById(R.id.yt_vid_time);
 
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,6 +142,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
                     intent.putExtra("channelName", ytMediaFilesObj.snippet.channelTitle);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
+
                 }
             });
         }
