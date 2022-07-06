@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/perfect_dark_theme"
     android:orientation="vertical"
-    tools:context=".LibraryActivity">
+    tools:context=".Activities.LibraryActivity">
 
     <LinearLayout
         android:id="@+id/lib_recent_watch"

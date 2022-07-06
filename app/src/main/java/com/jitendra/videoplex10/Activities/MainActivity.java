@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,11 +18,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.jitendra.videoplex10.Adapters.DeviceMFilesAdapter;
 import com.jitendra.videoplex10.Model.DeviceMediaFiles;
+import com.jitendra.videoplex10.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<DeviceMediaFiles> deviceMediaFilesArrayList;
     private DeviceMFilesAdapter deviceMFilesAdapter;
+    private ImageView menuMore;
 
     private static final int STORAGE_PERMISSION = 123;
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        menuMore = findViewById(R.id.ac_main_menu_more);
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setSelectedItemId(R.id.home_icon);
 
@@ -86,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
         deviceMediaFilesArrayList = loadDeviceMedia();
         deviceMFilesAdapter = new DeviceMFilesAdapter(this, deviceMediaFilesArrayList);
         recyclerView.setAdapter(deviceMFilesAdapter);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false));
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         deviceMFilesAdapter.notifyDataSetChanged();
 
     }

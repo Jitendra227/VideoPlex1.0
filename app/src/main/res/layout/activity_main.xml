@@ -8,7 +8,7 @@
     android:background="@color/perfect_dark_theme"
     android:orientation="vertical"
     android:elevation="24dp"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ac_main_toolbar"
@@ -30,20 +30,29 @@
             android:textColor="@color/teal_200"
             android:textAlignment="center"
             />
+
+        <ImageView
+            android:id="@+id/ac_main_menu_more"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_more_vert_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ac_main_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_above="@id/bottom_nav_bar"
+        android:layout_below="@id/ac_main_toolbar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/ac_main_toolbar"
-        android:layout_above="@id/bottom_nav_bar"
-        />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp" />
 
     <View
         android:layout_width="match_parent"

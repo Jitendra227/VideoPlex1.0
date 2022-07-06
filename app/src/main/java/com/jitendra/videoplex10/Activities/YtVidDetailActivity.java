@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.FragmentYtubePlayer;
+import com.jitendra.videoplex10.R;
 
 public class YtVidDetailActivity extends AppCompatActivity {
 

@@ -50,32 +50,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/yt_ll_watchLater_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_watch_later_icon"
-            app:tint="@color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="20dp"
-            android:text="Save to Watch later"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/yt_ll_share_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,6 +71,32 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
             android:text="Share.."
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/yt_ll_watchLater_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_watch_later_icon"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:text="watch later"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>

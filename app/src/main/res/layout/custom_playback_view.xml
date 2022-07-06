@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -46,6 +47,7 @@
                 android:layout_height="30dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="10dp"
+
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_more_vert_icon"
                 android:background="?attr/selectableItemBackgroundBorderless"/>
@@ -167,5 +169,18 @@
 
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/vid_lock"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_exo_lock_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerInside"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,6 +18,7 @@ import com.jitendra.videoplex10.Model.YoutubeSearchModel.SearchResponse;
 import com.jitendra.videoplex10.Model.YoutubeSearchModel.YtSearchedVideos;
 import com.jitendra.videoplex10.Network.ApiCallInterface;
 import com.jitendra.videoplex10.Network.RetrofitVidSearchInstance;
+import com.jitendra.videoplex10.R;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class SearchYtVideosActivity extends AppCompatActivity {
     private ArrayList<YtSearchedVideos> ytSearchedVideosFiles;
     private SearchYtDataAdapter searchYtDataAdapter;
     EditText videoQuery;
+    ImageView goBack;
 
     public static final String TAG = "Search Youtube Videos";
     @Override
@@ -42,12 +45,21 @@ public class SearchYtVideosActivity extends AppCompatActivity {
 
         videoQuery = findViewById(R.id.yt_search_video);
         recyclerView = findViewById(R.id.rv_load_searched_video);
+        goBack = findViewById(R.id.search_yt_go_back_icon);
 
         apiCallInterface = RetrofitVidSearchInstance.getRetrofitVidSearchInstance().create(ApiCallInterface.class);
         ytSearchedVideosFiles = new ArrayList<>();
 
         searchYtDataAdapter = new SearchYtDataAdapter(this, ytSearchedVideosFiles);
         recyclerView.setAdapter(searchYtDataAdapter);
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchYtVideosActivity.this.finish();
+            }
+        });
+
         videoQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +85,7 @@ public class SearchYtVideosActivity extends AppCompatActivity {
                 SearchResponse searchResponse = response.body();
                 if(searchResponse != null) {
                     if(searchResponse.items.size() > 0) {
-                        for(int i=0;i<5;i++){
+                        for(int i=0;i<50;i++){
                             ytSearchedVideosFiles.add(searchResponse.items.get(i));
                         }
                         searchYtDataAdapter.notifyDataSetChanged();

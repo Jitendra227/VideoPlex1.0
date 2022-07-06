@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.jitendra.videoplex10.R;
 
 public class LibraryActivity extends AppCompatActivity {
 

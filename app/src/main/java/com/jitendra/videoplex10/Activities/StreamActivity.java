@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import com.jitendra.videoplex10.Model.YoutubeModel.PopularResponse;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.Network.ApiCallInterface;
 import com.jitendra.videoplex10.Network.RetrofitClientInstance;
+import com.jitendra.videoplex10.R;
 
 import java.util.ArrayList;
 
@@ -103,7 +104,7 @@ public class StreamActivity extends AppCompatActivity {
                 PopularResponse popularResponse = response.body();
                 if(popularResponse != null){
                     if(popularResponse.items.size()>0){
-                        for(int i=0;i<35;i++){
+                        for(int i=0;i<5;i++){
                             ytMediaFilesArrayList.add(popularResponse.items.get(i));
                         }
                         fetchYtDataAdapter.notifyDataSetChanged();
