@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerActivity">
+    tools:context=".Activities.PlayerActivity">
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/exoplayer_View"
@@ -19,7 +19,50 @@
         app:show_timeout="4000"
         app:surface_type="surface_view"
         app:shutter_background_color="@color/black"
-        app:use_controller="true" />
+        app:use_controller="true">
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/lockButton"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:contentDescription="lock"-->
+<!--            android:src="@drawable/ic_exo_lock_icon"-->
+<!--            app:tint="@color/white" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/brightnessIcon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:drawableLeft="@drawable/ic_brightness_icon"-->
+<!--            android:text="0"-->
+<!--            tools:ignore="RtlHardcoded"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:background="#42000000"-->
+<!--            android:visibility="gone"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/volumeIcon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:drawableLeft="@drawable/ic_volume_icon"-->
+<!--            android:text="0"-->
+<!--            tools:ignore="RtlHardcoded"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:background="#42000000"-->
+<!--            android:visibility="gone"/>-->
+
+    </com.google.android.exoplayer2.ui.PlayerView>
+
+
 
 
 </RelativeLayout>

@@ -1,7 +1,9 @@
 package com.jitendra.videoplex10.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.jitendra.videoplex10.Activities.WatchLaterActivity;
 import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.R;
-import com.jitendra.videoplex10.WatchLaterActivity;
-import com.jitendra.videoplex10.YtVidDetailActivity;
+import com.jitendra.videoplex10.Activities.YtVidDetailActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +47,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         YtMediaFiles videos = ytMediaFilesList.get(position);
         if(videos!=null) {
@@ -92,17 +96,51 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
                     }
                 });
 
+                bsView.findViewById(R.id.yt_ll_share_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Uri uri = Uri.parse(ytMediaFilesList.get(position).id);
+                        Intent shIntent = new Intent(Intent.ACTION_SEND);
+                        shIntent.setType("text/plain");
+                        //shIntent.setType("https://www.youtube.com/*");
+                        shIntent.putExtra(Intent.EXTRA_STREAM,uri);
+                        context.startActivity(Intent.createChooser(shIntent,"Share Video via"));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
                 bsView.findViewById(R.id.yt_ll_watchLater_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(holder.getAbsoluteAdapterPosition());
-                        Intent intent = new Intent(context, WatchLaterActivity.class);
-                        intent.putExtra("vidId", ytMediaFilesObj.id);
-                        intent.putExtra("videoName", ytMediaFilesObj.snippet.title);
-                        intent.putExtra("vidThumb", ytMediaFilesObj.snippet.thumbnails.medium);
-                        intent.putExtra("vidChannel", ytMediaFilesObj.snippet.channelTitle);
-                        intent.putExtra("vidDuration", ytMediaFilesObj.contentDetails.duration);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        YtMediaFiles ytMediaFilesObj = holder.itemView;
+//                        Intent intent = new Intent(context, WatchLaterActivity.class);
+//
+//                        intent.putExtra("allinfo", holder.itemView.toString());
+//
+//                        intent.putExtra("vidId", "1234");
+//                        intent.putExtra("videoName", holder.vid_title.toString());
+//                        intent.putExtra("vidThumb", holder.vid_thumb.toString());
+//                        intent.putExtra("vidChannel", holder.vid_channel_name.toString());
+//                        intent.putExtra("vidDuration", holder.vid_duration.toString());
+//
+                        Log.d(TAG, "onClick: sending data to save later");
+                        //holder.itemView.performClick();
+                        YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(position);
+
+                        Intent wchIntent = new Intent(context, WatchLaterActivity.class);
+                        wchIntent.putExtra("vidId",  ytMediaFilesObj.id);
+                        wchIntent.putExtra("videoName", ytMediaFilesObj.snippet.title);
+                        wchIntent.putExtra("vidThumb", ytMediaFilesObj.snippet.thumbnails.standard);
+                        wchIntent.putExtra("vidChannel", ytMediaFilesObj.snippet.channelTitle);
+                        wchIntent.putExtra("vidDuration", ytMediaFilesObj.contentDetails.duration);
+                        Log.d(TAG, "Data sent---->"+ytMediaFilesObj.id +"  "+
+                                ytMediaFilesObj.snippet.title+"  "+ ytMediaFilesObj.snippet.thumbnails.standard+ "  "+
+                                ytMediaFilesObj.snippet.channelTitle+"  "+ ytMediaFilesObj.contentDetails.duration);
+                        context.startActivity(wchIntent);
+
+                        //LocalBroadcastManager.getInstance(context).sendBroadcast(wchIntent);
+
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -134,14 +172,20 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Log.d(TAG, "onClick: sending video id->");
+
                     YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(getAbsoluteAdapterPosition());
+
                     Intent intent = new Intent(context, YtVidDetailActivity.class);
                     intent.putExtra("videoId", ytMediaFilesObj.id);
                     intent.putExtra("vidTitle",ytMediaFilesObj.snippet.title);
                     intent.putExtra("channelName", ytMediaFilesObj.snippet.channelTitle);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
+
+
+
 
                 }
             });

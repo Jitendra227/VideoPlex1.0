@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".YtVidDetailActivity">
+    android:background="@color/perfect_dark_theme"
+    tools:context=".Activities.YtVidDetailActivity">
 
     <fragment
         android:id="@+id/fragment_youtube"
@@ -21,12 +22,13 @@
         android:layout_weight="1"
         android:clipToPadding="false"
         android:scrollbars="vertical">
-
-        <LinearLayout
+            <LinearLayout
             android:id="@+id/yt_vid_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_grey_200"
             android:focusable="true">
 
             <TextView
@@ -37,7 +39,8 @@
                 android:text="This is video title"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:fontFamily="sans-serif"
+                android:textColor="@color/white"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -50,8 +53,9 @@
                 android:layout_margin="10dp"
                 android:text="This is channel name"
                 android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/white"/>
 
             <View
                 android:layout_width="match_parent"

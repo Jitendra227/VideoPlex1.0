@@ -9,19 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.Model.YoutubeSearchModel.ThumnailsType;
 import com.jitendra.videoplex10.Model.YoutubeSearchModel.YtSearchedVideos;
 import com.jitendra.videoplex10.R;
-import com.jitendra.videoplex10.WatchLaterActivity;
-import com.jitendra.videoplex10.YtVidDetailActivity;
+import com.jitendra.videoplex10.Activities.YtVidDetailActivity;
 
 import java.util.ArrayList;
 
@@ -79,19 +76,19 @@ public class SearchYtDataAdapter extends RecyclerView.Adapter<SearchYtDataAdapte
                         }
                     });
 
-                    bsView.findViewById(R.id.yt_ll_watchLater_layout).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.d(TAG, "onClick: adding to watch later->");
-                            Toast.makeText(context, "adding to watch later", Toast.LENGTH_SHORT).show();
-                            YtSearchedVideos ytSearchedVideosObj2 = ytSearchedVideosList.get(position);
-                            Intent intent = new Intent(context, WatchLaterActivity.class);
-                            intent.putExtra("videoId", ytSearchedVideosObj2.id.videoId);
-                            intent.putExtra("vidTitle",ytSearchedVideosObj2.snippet.title);
-                            intent.putExtra("channelName", ytSearchedVideosObj2.snippet.channelTitle);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        }
-                    });
+//                    bsView.findViewById(R.id.yt_ll_watchLater_layout).setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Log.d(TAG, "onClick: adding to watch later->");
+//                            Toast.makeText(context, "adding to watch later", Toast.LENGTH_SHORT).show();
+//                            YtSearchedVideos ytSearchedVideosObj2 = ytSearchedVideosList.get(position);
+//                            Intent intent = new Intent(context, WatchLaterActivity.class);
+//                            intent.putExtra("videoId", ytSearchedVideosObj2.id.videoId);
+//                            intent.putExtra("vidTitle",ytSearchedVideosObj2.snippet.title);
+//                            intent.putExtra("channelName", ytSearchedVideosObj2.snippet.channelTitle);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        }
+//                    });
 
 
 

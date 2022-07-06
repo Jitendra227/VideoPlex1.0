@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.jitendra.videoplex10.R;
-import com.jitendra.videoplex10.VidDatabase.Videos;
+import com.jitendra.videoplex10.VidDatabase.WchVideos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,9 @@ import java.util.List;
 public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Videos> videosList;
+    private List<WchVideos> videosList;
 
-    public WatchLaterAdapter(Context context, ArrayList<Videos> videosList) {
+    public WatchLaterAdapter(Context context, List<WchVideos> videosList) {
         this.context = context;
         this.videosList = videosList;
     }
@@ -36,10 +36,11 @@ public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.wch_channelName.setText(videosList.get(position).vChannelName);
-        holder.wch_duration.setText(videosList.get(position).vDuration);
-        holder.wch_vidName.setText(videosList.get(position).vTitle);
-        Glide.with(context).load(videosList.get(position).vThumbnail)
+        WchVideos wch = videosList.get(position);
+        holder.wch_channelName.setText(wch.vChannelName);
+        holder.wch_duration.setText(wch.vDuration);
+        holder.wch_vidName.setText(wch.vTitle);
+        Glide.with(context).load(wch.vThumbnail)
                 .into(holder.wch_thumb);
     }
 

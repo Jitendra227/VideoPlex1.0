@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -29,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.Model.DeviceMediaFiles;
-import com.jitendra.videoplex10.PlayerActivity;
+import com.jitendra.videoplex10.Activities.PlayerActivity;
 import com.jitendra.videoplex10.R;
 
 import java.io.File;

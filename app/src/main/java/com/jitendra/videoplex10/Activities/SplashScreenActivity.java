@@ -1,11 +1,12 @@
-package com.jitendra.videoplex10;
+package com.jitendra.videoplex10.Activities;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.jitendra.videoplex10.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
