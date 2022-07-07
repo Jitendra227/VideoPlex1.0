@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -23,6 +25,8 @@ import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.R;
 import com.jitendra.videoplex10.Activities.YtVidDetailActivity;
+import com.jitendra.videoplex10.VidDatabase.WchLaterDatabase;
+import com.jitendra.videoplex10.VidDatabase.WchVideos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -112,33 +116,48 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
                 bsView.findViewById(R.id.yt_ll_watchLater_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        YtMediaFiles ytMediaFilesObj = holder.itemView;
-//                        Intent intent = new Intent(context, WatchLaterActivity.class);
-//
-//                        intent.putExtra("allinfo", holder.itemView.toString());
-//
-//                        intent.putExtra("vidId", "1234");
-//                        intent.putExtra("videoName", holder.vid_title.toString());
-//                        intent.putExtra("vidThumb", holder.vid_thumb.toString());
-//                        intent.putExtra("vidChannel", holder.vid_channel_name.toString());
-//                        intent.putExtra("vidDuration", holder.vid_duration.toString());
-//
+
                         Log.d(TAG, "onClick: sending data to save later");
-                        //holder.itemView.performClick();
                         YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(position);
 
-                        Intent wchIntent = new Intent(context, WatchLaterActivity.class);
-                        wchIntent.putExtra("vidId",  ytMediaFilesObj.id);
-                        wchIntent.putExtra("videoName", ytMediaFilesObj.snippet.title);
-                        wchIntent.putExtra("vidThumb", ytMediaFilesObj.snippet.thumbnails.standard);
-                        wchIntent.putExtra("vidChannel", ytMediaFilesObj.snippet.channelTitle);
-                        wchIntent.putExtra("vidDuration", ytMediaFilesObj.contentDetails.duration);
-                        Log.d(TAG, "Data sent---->"+ytMediaFilesObj.id +"  "+
-                                ytMediaFilesObj.snippet.title+"  "+ ytMediaFilesObj.snippet.thumbnails.standard+ "  "+
-                                ytMediaFilesObj.snippet.channelTitle+"  "+ ytMediaFilesObj.contentDetails.duration);
-                        context.startActivity(wchIntent);
+                        String id, title, channel, duration, thumb ;
+                        id = ytMediaFilesObj.id;
+                        title = ytMediaFilesObj.snippet.title;
+                        channel = ytMediaFilesObj.snippet.channelTitle;
+                        duration = ytMediaFilesObj.contentDetails.duration;
 
-                        //LocalBroadcastManager.getInstance(context).sendBroadcast(wchIntent);
+                        thumb = ytMediaFilesObj.snippet.thumbnails.high.url;
+
+                        class SaveVideos extends AsyncTask<Void, Void, Void> {
+
+                            @Override
+                            protected Void doInBackground(Void... voids) {
+                                WchVideos wcVid = new WchVideos();
+                                wcVid.setvId(id);
+                                wcVid.setvChannelName(channel);
+                                wcVid.setvTitle(title);
+                                wcVid.setvDuration(duration);
+                                wcVid.setvThumbnail(thumb);
+                                Log.d(TAG, "doInBackground: adding \n"+id+" "+title+" "+channel+" "+duration+" "+thumb);
+
+                                WchLaterDatabase.getDbInstance(context.getApplicationContext())
+                                        .wchVideosDao()
+                                        .insertVideos(wcVid);
+                                Log.d(TAG, "doInBackground: done adding videos details");
+
+                                return null;
+                            }
+
+                            @Override
+                            protected void onPostExecute(Void unused) {
+                                super.onPostExecute(unused);
+
+                                Log.d(TAG, "doInBackground: videos in db successful");
+                            }
+                        }
+
+                        SaveVideos sv = new SaveVideos();
+                        sv.execute();
 
                         bottomSheetDialog.dismiss();
                     }

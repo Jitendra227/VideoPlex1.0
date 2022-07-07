@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        menuMore = findViewById(R.id.ac_main_menu_more);
+        //menuMore = findViewById(R.id.ac_main_menu_more);
         bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setSelectedItemId(R.id.home_icon);
 
