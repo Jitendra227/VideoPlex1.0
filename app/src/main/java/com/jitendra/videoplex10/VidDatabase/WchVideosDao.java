@@ -19,4 +19,7 @@ public interface WchVideosDao {
 
     @Delete
     void deleteWchVideos(WchVideos wchVideos);
+
+    @Query("DELETE FROM wchvideos")
+    void deleteAll();
 }

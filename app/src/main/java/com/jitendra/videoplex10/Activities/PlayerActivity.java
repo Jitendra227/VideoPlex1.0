@@ -126,23 +126,6 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        fullScreenBtn.setOnClickListener(new View.OnClickListener()) {
-//            @Override
-//            public void onClick(View v) {
-//                if(changeToFullScreen){
-//                    fullScreenBtn.setImageDrawable(ContextCompat
-//                            .getDrawable(PlayerActivity.this, R.drawable.ic_exo_fullscreen_expand));
-//                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//                    changeToFullScreen = false;
-//                }
-//                else {
-//                    fullScreenBtn.setImageDrawable(ContextCompat.getDrawable(PlayerActivity.this, R.drawable.ic_exo_fullscreen_exit));
-//                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//                    changeToFullScreen = true;
-//                }
-//            }
-//        });
-
         playMyVideo();
     }
 

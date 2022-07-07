@@ -104,7 +104,7 @@ public class StreamActivity extends AppCompatActivity {
                 PopularResponse popularResponse = response.body();
                 if(popularResponse != null){
                     if(popularResponse.items.size()>0){
-                        for(int i=0;i<5;i++){
+                        for(int i=0;i<20;i++){
                             ytMediaFilesArrayList.add(popularResponse.items.get(i));
                         }
                         fetchYtDataAdapter.notifyDataSetChanged();

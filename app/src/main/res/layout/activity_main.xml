@@ -14,7 +14,7 @@
         android:id="@+id/ac_main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/dark_grey_200"
+        android:background="@color/perfect_dark_theme"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -31,15 +31,6 @@
             android:textAlignment="center"
             />
 
-        <ImageView
-            android:id="@+id/ac_main_menu_more"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="18dp"
-            android:src="@drawable/ic_more_vert_icon"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
