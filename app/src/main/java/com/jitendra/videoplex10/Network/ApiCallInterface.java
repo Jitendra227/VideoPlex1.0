@@ -16,12 +16,14 @@ import retrofit2.http.Url;
 public interface ApiCallInterface {
     //public static final String POPULAR_VID = "videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyDdcgZZhCL09EkHNh3JmPAsocL_CePOCCQ";
 
-    public static final String KEY ="";
-
-
     @GET("videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=101&regionCode=US&key=AIzaSyDdcgZZhCL09EkHNh3JmPAsocL_CePOCCQ")
     Call<PopularResponse> getAllPopularVideos();
 
     @GET
     Call<SearchResponse> getSearchedVideos(@Url String url);
+
+    @GET
+    Call<PopularResponse> getChannelLogo(@Url String url);
+
+
 }

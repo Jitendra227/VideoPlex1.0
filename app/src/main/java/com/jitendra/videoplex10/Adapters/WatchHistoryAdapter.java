@@ -18,46 +18,47 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jitendra.videoplex10.R;
+import com.jitendra.videoplex10.VidDatabase.WatchHistoryDb.HistoryVids;
+import com.jitendra.videoplex10.VidDatabase.WatchHistoryDb.HistoryVidsDatabase;
 import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchLaterDatabase;
-import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchVideos;
 
 import java.util.List;
 
-public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.ViewHolder> {
+public class WatchHistoryAdapter extends RecyclerView.Adapter<WatchHistoryAdapter.ViewHolder> {
 
     private Context context;
-    private List<WchVideos> videosList;
+    private List<HistoryVids> historyVidsList;
     BottomSheetDialog bottomSheetDialog;
 
-    public WatchLaterAdapter(Context context, List<WchVideos> videosList) {
+    public WatchHistoryAdapter(Context context, List<HistoryVids> historyVidsList) {
         this.context = context;
-        this.videosList = videosList;
+        this.historyVidsList = historyVidsList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.watch_later_videos_list,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.watch_history_videos_list,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        WchVideos wch = videosList.get(position);
-        holder.wch_channelName.setText(wch.vChannelName);
-        holder.wch_duration.setText(wch.vDuration);
-        holder.wch_vidName.setText(wch.vTitle);
-        Glide.with(context).load(wch.vThumbnail)
-                .into(holder.wch_thumb);
+        HistoryVids hist = historyVidsList.get(position);
+        holder.his_title.setText(hist.hvTitle);
+        holder.his_channel.setText(hist.hvChannelName);
+        holder.his_duration.setText(hist.hvDuration);
+        Glide.with(context).load(hist.hvThumbnail)
+                .into(holder.his_thumb);
 
-        holder.wch_menu_more.setOnClickListener(new View.OnClickListener() {
+        holder.his_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetTheme);
-                View bsView = LayoutInflater.from(context).inflate(R.layout.watch_later_bottom_sheet,
-                        v.findViewById(R.id.watch_later_bottom_sheet_layout));
+                View bsView = LayoutInflater.from(context).inflate(R.layout.watch_history_bottom_sheet,
+                        v.findViewById(R.id.wch_his_btm_sheet_layout));
 
-                bsView.findViewById(R.id.watch_later_play_layout).setOnClickListener(new View.OnClickListener() {
+                bsView.findViewById(R.id.wch_his_btm_play_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         holder.itemView.performClick();
@@ -65,7 +66,7 @@ public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.Vi
                     }
                 });
 
-                bsView.findViewById(R.id.watch_later_remove_layout).setOnClickListener(new View.OnClickListener() {
+                bsView.findViewById(R.id.wch_his_btm_remove_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -73,10 +74,10 @@ public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.Vi
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                deleteTask(wch);
-                                videosList.remove(position);
+                                deleteVideo(hist);
+                                historyVidsList.remove(position);
                                 notifyItemRemoved(position);
-                                notifyItemRangeChanged(holder.getAbsoluteAdapterPosition(), videosList.size());
+                                notifyItemRangeChanged(holder.getAbsoluteAdapterPosition(), historyVidsList.size());
                             }
                         });
                         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -92,7 +93,14 @@ public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.Vi
                     }
                 });
 
-                bsView.findViewById(R.id.watch_later_share_layout).setOnClickListener(new View.OnClickListener() {
+                bsView.findViewById(R.id.wch_his_btm_later_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
+                bsView.findViewById(R.id.wch_his_btm_share_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
@@ -105,45 +113,44 @@ public class WatchLaterAdapter extends RecyclerView.Adapter<WatchLaterAdapter.Vi
 
     }
 
-
     @Override
     public int getItemCount() {
-        return videosList.size();
+        return historyVidsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView wch_thumb, wch_menu_more;
-        TextView wch_vidName, wch_channelName,wch_duration;
+        ImageView his_thumb, his_menu;
+        TextView his_channel, his_title, his_duration;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            wch_thumb    = itemView.findViewById(R.id.watch_later_thumbnail);
-            wch_menu_more = itemView.findViewById(R.id.watch_later_menu_more);
-            wch_vidName     = itemView.findViewById(R.id.watch_later_videoName);
-            wch_channelName     = itemView.findViewById(R.id.watch_later_channel_name);
-            wch_duration = itemView.findViewById(R.id.watch_later_duration);
+            his_thumb = itemView.findViewById(R.id.wch_his_lst_thumbnail);
+            his_channel = itemView.findViewById(R.id.wch_his_lst_channel_name);
+            his_title = itemView.findViewById(R.id.wch_his_lst_videoName);
+            his_duration = itemView.findViewById(R.id.wch_his_lst_duration);
+            his_menu = itemView.findViewById(R.id.wch_his_lst_menu_more);
         }
     }
 
-    private void deleteTask(WchVideos wch) {
-        class RemoveFromWatchList extends AsyncTask<Void, Void, Void> {
+    private void deleteVideo(HistoryVids hist) {
+        class RemoveFromHistoryList extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                WchLaterDatabase.getDbInstance(context.getApplicationContext())
-                        .wchVideosDao()
-                        .deleteWchVideos(wch);
+                HistoryVidsDatabase.getHistoryDbInstance(context.getApplicationContext())
+                        .historyVidsDao()
+                        .deleteFromHistory(hist);
                 return null;
             }
 
             @Override
             protected void onPostExecute(Void unused) {
                 super.onPostExecute(unused);
-                Toast.makeText(context, "Removed from watchlist", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Removed from history", Toast.LENGTH_SHORT).show();
             }
         }
 
-        RemoveFromWatchList rm = new RemoveFromWatchList();
+        RemoveFromHistoryList rm = new RemoveFromHistoryList();
         rm.execute();
     }
 }

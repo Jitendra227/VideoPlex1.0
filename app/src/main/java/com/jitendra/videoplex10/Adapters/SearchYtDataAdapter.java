@@ -49,6 +49,7 @@ public class SearchYtDataAdapter extends RecyclerView.Adapter<SearchYtDataAdapte
         YtSearchedVideos videos = ytSearchedVideosList.get(position);
         if(videos!=null) {
             String clickedVidId = videos.id.videoId;
+            String sch_channel_id = videos.snippet.channelId;
             holder.sch_vid_title.setText(videos.snippet.title);
             if(videos.snippet.thumbnails != null) {
                 ThumnailsType thTypes = videos.snippet.thumbnails.high;

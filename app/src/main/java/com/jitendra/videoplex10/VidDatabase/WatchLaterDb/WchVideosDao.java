@@ -1,4 +1,4 @@
-package com.jitendra.videoplex10.VidDatabase;
+package com.jitendra.videoplex10.VidDatabase.WatchLaterDb;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -14,7 +14,7 @@ public interface WchVideosDao {
     @Query("SELECT * FROM wchvideos")
     List<WchVideos> getAll();
 
-    @Insert()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertVideos(WchVideos... wchVideos);
 
     @Delete
@@ -22,4 +22,7 @@ public interface WchVideosDao {
 
     @Query("DELETE FROM wchvideos")
     void deleteAll();
+
+    @Query("select count(id) from wchvideos")
+    int totalUnwatched();
 }

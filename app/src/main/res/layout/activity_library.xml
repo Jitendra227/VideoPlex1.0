@@ -25,60 +25,25 @@
             android:textColor="@color/white"
             android:textSize="24dp" />
 
-        <HorizontalScrollView
+        <ScrollView
             android:id="@+id/lib_horizontal_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="0"
-            android:fillViewport="true"
-            android:measureAllChildren="false"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ac_lib_recycler_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:orientation="horizontal"
+                />
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="2dp"
-                    android:scaleType="centerCrop"
-                    android:requiresFadingEdge="horizontal"
-                    android:layout_centerVertical="true"
-                    android:src="@color/teal_200"
-                    android:background="@color/dark_grey" />
-
-                <LinearLayout
-                    android:id="@+id/vid_lst_linear1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="4dp"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:id="@+id/vid_lst_videoName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="video name"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/vid_lst_videoSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="jitendra"
-                        android:textColor="#888888" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </HorizontalScrollView>
+        </ScrollView>
     </LinearLayout>
 
     <View

@@ -1,10 +1,9 @@
-package com.jitendra.videoplex10.VidDatabase;
+package com.jitendra.videoplex10.VidDatabase.WatchLaterDb;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
-import androidx.room.Dao;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -21,7 +20,7 @@ public abstract class WchLaterDatabase extends RoomDatabase {
 
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                    WchLaterDatabase.class, "DB_NAME")
+                    WchLaterDatabase.class, "WatchLater_DB")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
