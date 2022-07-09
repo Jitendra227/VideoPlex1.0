@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/perfect_dark_theme"
+    tools:context=".Activities.WatchHistoryActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/wch_his_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/perfect_dark_theme"
+            android:theme="?attr/actionBarTheme">
+
+            <ImageView
+                android:id="@+id/wch_his_go_back"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_exo_back_icon" />
+
+            <TextView
+                android:id="@+id/wch_his_tv_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="24sp"
+                android:fontFamily="sans-serif"
+                android:text="History"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/wch_his_delete_all"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_delete_video" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wch_his_rv_videos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/wch_his_nav_bar"
+        android:layout_below="@id/wch_his_toolbar"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/wch_his_nav_bar"
+        android:background="#444343" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/wch_his_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/perfect_dark_theme"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@color/bnv_icon_background"
+        app:itemTextColor="@color/bnv_icon_background"
+        app:menu="@menu/bottom_nav_bar"
+        tools:targetApi="p" />
+</RelativeLayout>

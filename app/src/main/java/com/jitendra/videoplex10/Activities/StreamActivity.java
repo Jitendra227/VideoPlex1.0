@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.jitendra.videoplex10.Adapters.FetchYtDataAdapter;
+import com.jitendra.videoplex10.Config.YoutubeConfig;
 import com.jitendra.videoplex10.Model.YoutubeModel.PopularResponse;
+import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
 import com.jitendra.videoplex10.Network.ApiCallInterface;
 import com.jitendra.videoplex10.Network.RetrofitClientInstance;
@@ -37,6 +39,7 @@ public class StreamActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<YtMediaFiles> ytMediaFilesArrayList;
     private FetchYtDataAdapter fetchYtDataAdapter;
+    public ArrayList<String> logoArrayList;
 
     ImageView searchBtn, settingBtn;
 
@@ -49,7 +52,8 @@ public class StreamActivity extends AppCompatActivity {
         recyclerView  = findViewById(R.id.ac_stream_recyclerView);
 
         apiCallInterface = RetrofitClientInstance.getRetrofitInstance().create(ApiCallInterface.class);
-        ytMediaFilesArrayList= new ArrayList<>();
+        ytMediaFilesArrayList = new ArrayList<>();
+        //logoArrayList = new ArrayList<>();
 
         retrieveYtData();
         fetchYtDataAdapter = new FetchYtDataAdapter(this, ytMediaFilesArrayList);
@@ -106,6 +110,33 @@ public class StreamActivity extends AppCompatActivity {
                     if(popularResponse.items.size()>0){
                         for(int i=0;i<20;i++){
                             ytMediaFilesArrayList.add(popularResponse.items.get(i));
+//                            String url = popularResponse.items.get(i).snippet.channelId;
+//
+//                            String chUrl =  YoutubeConfig.CHANNEL_URL+YoutubeConfig.CH_Middle
+//                                    + YoutubeConfig.ch
+//                                    + url + YoutubeConfig.KEY;
+//
+//                            Log.d(TAG, "getChannelLogo: searching logo for"+ chUrl);
+//                            Call<PopularResponse> call2 = RetrofitClientInstance.getRetrofitInstance().
+//                                    create(ApiCallInterface.class).getChannelLogo(chUrl);
+//                            int finalI = i;
+//                            call2.enqueue(new Callback<PopularResponse>() {
+//                                @Override
+//                                public void onResponse(Call<PopularResponse> call2, Response<PopularResponse> response1) {
+//                                    PopularResponse popularResponse1 = response1.body();
+//
+//                                    if(popularResponse1 != null){
+//                                            logoArrayList.add(popularResponse1.items.get(finalI).snippet
+//                                            .thumbnails.dft.url);
+//                                        }
+//                                    return;
+//                                }
+//                                @Override
+//                                public void onFailure(Call<PopularResponse> call2, Throwable t1) {
+//                                    Log.d(TAG, "onResponse: unable to Search video");
+//                                }
+//                            });
+
                         }
                         fetchYtDataAdapter.notifyDataSetChanged();
                     }

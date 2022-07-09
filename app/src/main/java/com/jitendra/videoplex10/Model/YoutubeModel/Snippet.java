@@ -11,4 +11,6 @@ public class Snippet implements Serializable {
     public Thumbnails thumbnails;
 
     public String channelTitle;
+
+    public String channelId;
 }

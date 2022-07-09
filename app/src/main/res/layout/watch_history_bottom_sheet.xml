@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/yt_bottom_sheet_layout"
+    android:id="@+id/wch_his_btm_sheet_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_grey_200"
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="More Options"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#444343" />
     <LinearLayout
-        android:id="@+id/yt_ll_play_layout"
+        android:id="@+id/wch_his_btm_play_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical"
-        android:padding="10dp"
         android:orientation="horizontal"
-        android:background="?attr/selectableItemBackground" >
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -42,15 +27,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Video"
-            android:textSize="16sp"
-            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
-            android:layout_gravity="center_vertical" />
+            android:text="Play Video"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/yt_ll_watchLater_layout"
+        android:id="@+id/wch_his_btm_remove_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_remove_video_icon"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:text="Remove from history"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wch_his_btm_later_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -70,13 +81,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
-            android:text="Add to watch later"
+            android:text="Save to watch later"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/yt_ll_share_layout"
+        android:id="@+id/wch_his_btm_share_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -100,7 +111,5 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
-
-
 
 </LinearLayout>

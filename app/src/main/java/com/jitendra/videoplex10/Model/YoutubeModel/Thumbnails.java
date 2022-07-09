@@ -7,4 +7,7 @@ import java.io.Serializable;
 public class Thumbnails implements Serializable {
 
     public ThumbnailType medium, high , standard;
+
+    @SerializedName("default")
+    public ThumbnailType dft;
 }

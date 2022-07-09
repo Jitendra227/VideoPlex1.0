@@ -17,4 +17,7 @@ public class Snippet implements Serializable {
 
     @SerializedName("thumbnails")
     public Thumbnails thumbnails;
+
+    @SerializedName("channelId")
+    public String channelId;
 }

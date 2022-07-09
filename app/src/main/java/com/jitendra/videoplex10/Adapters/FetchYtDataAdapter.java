@@ -3,6 +3,7 @@ package com.jitendra.videoplex10.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,28 +12,41 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.jitendra.videoplex10.Activities.WatchLaterActivity;
+import com.jitendra.videoplex10.Config.YoutubeConfig;
+import com.jitendra.videoplex10.Model.YoutubeModel.PopularResponse;
 import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.Model.YoutubeModel.YtMediaFiles;
+import com.jitendra.videoplex10.Network.ApiCallInterface;
+import com.jitendra.videoplex10.Network.RetrofitClientInstance;
 import com.jitendra.videoplex10.R;
 import com.jitendra.videoplex10.Activities.YtVidDetailActivity;
-import com.jitendra.videoplex10.VidDatabase.WchLaterDatabase;
-import com.jitendra.videoplex10.VidDatabase.WchVideos;
+import com.jitendra.videoplex10.VidDatabase.WatchHistoryDb.HistoryVids;
+import com.jitendra.videoplex10.VidDatabase.WatchHistoryDb.HistoryVidsDatabase;
+import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchLaterDatabase;
+import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchVideos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.ViewHolder> {
     Context context;
+    //ArrayList<String> logos;
     ArrayList<YtMediaFiles> ytMediaFilesList;
     BottomSheetDialog bottomSheetDialog;
 
@@ -41,6 +55,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
     public FetchYtDataAdapter(Context context, ArrayList<YtMediaFiles> ytMediaFilesList) {
         this.context = context;
         this.ytMediaFilesList = ytMediaFilesList;
+        //this.logos = logos;
     }
 
     @NonNull
@@ -54,8 +69,10 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         YtMediaFiles videos = ytMediaFilesList.get(position);
+//        String logo_url = logos.get(position);
         if(videos!=null) {
             String clickedId = videos.id;
+            String vid_channel_id = videos.snippet.channelId;
             holder.vid_title.setText(videos.snippet.title);
             if(videos.snippet.thumbnails != null){
                 ThumbnailType thType = videos.snippet.thumbnails.high;
@@ -66,7 +83,14 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
 
                 Glide.with(context).load(thType.url)
                         .into(holder.vid_thumb);
+
             }
+            //String logo_url = getChannelLogo(vid_channel_id);
+//            Log.d(TAG, "sent logo url --------\n"+ logo_url);
+//
+//            Glide.with(context).load(logo_url)
+//                    .into(holder.vid_channel_icon);
+
 
             String fetchedTime = videos.contentDetails.duration;
             fetchedTime = fetchedTime.substring(2);
@@ -82,8 +106,6 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
             holder.vid_channel_name.setText(videos.snippet.channelTitle);
         }
 
-        Glide.with(context).load(R.drawable.ic_exo_play_icon)
-                .into(holder.vid_channel_icon);
 
         holder.vid_menu_more.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +117,45 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
                 bsView.findViewById(R.id.yt_ll_play_layout).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(position);
+                        String hisId, hisTitle, hisChannel, hisDuration, hisThumb;
+                        hisId = ytMediaFilesObj.id;
+                        hisTitle = ytMediaFilesObj.snippet.title;
+                        hisChannel = ytMediaFilesObj.snippet.channelTitle;
+                        hisDuration = ytMediaFilesObj.contentDetails.duration;
+                        hisThumb = ytMediaFilesObj.snippet.thumbnails.high.url;
+
+                        class SaveToHistory extends AsyncTask<Void, Void, Void> {
+                            @Override
+                            protected Void doInBackground(Void... voids) {
+
+                                HistoryVids his = new HistoryVids();
+                                his.setHvId(hisId);
+                                his.setHvChannelName(hisChannel);
+                                his.setHvTitle(hisTitle);
+                                his.setHvDuration(hisDuration);
+                                his.setHvThumbnail(hisThumb);
+
+                                HistoryVidsDatabase.getHistoryDbInstance(context.getApplicationContext())
+                                        .historyVidsDao()
+                                        .insertToHistory(his);
+                                Log.d(TAG, "doInBackground: added to history");
+
+                                return null;
+                            }
+
+                            @Override
+                            protected void onPostExecute(Void unused) {
+                                super.onPostExecute(unused);
+
+                                Log.d(TAG, "doInBackground: videos in db successful");
+                            }
+                        }
+
+                        SaveToHistory sth = new SaveToHistory();
+                        sth.execute();
+
                         holder.itemView.performClick();
                         bottomSheetDialog.dismiss();
                     }
@@ -132,14 +193,15 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
 
                             @Override
                             protected Void doInBackground(Void... voids) {
+
+                                Log.d(TAG, "doInBackground: adding \n"+id+" "+title+" "+channel+" "+duration+" "+thumb);
+
                                 WchVideos wcVid = new WchVideos();
                                 wcVid.setvId(id);
                                 wcVid.setvChannelName(channel);
                                 wcVid.setvTitle(title);
                                 wcVid.setvDuration(duration);
                                 wcVid.setvThumbnail(thumb);
-                                Log.d(TAG, "doInBackground: adding \n"+id+" "+title+" "+channel+" "+duration+" "+thumb);
-
                                 WchLaterDatabase.getDbInstance(context.getApplicationContext())
                                         .wchVideosDao()
                                         .insertVideos(wcVid);
@@ -171,7 +233,7 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
 
     @Override
     public int getItemCount() {
-        return ytMediaFilesList.size();
+        return ytMediaFilesList.size() ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -187,27 +249,97 @@ public class FetchYtDataAdapter extends RecyclerView.Adapter<FetchYtDataAdapter.
             vid_channel_name = itemView.findViewById(R.id.yt_channel_name);
             vid_duration     = itemView.findViewById(R.id.yt_vid_time);
 
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Log.d(TAG, "onClick: sending video id->");
+                    Log.d(TAG, "onClick: sending data to save later");
 
                     YtMediaFiles ytMediaFilesObj = ytMediaFilesList.get(getAbsoluteAdapterPosition());
+                    String hisId, hisTitle, hisChannel, hisDuration, hisThumb;
+                    hisId = ytMediaFilesObj.id;
+                    hisTitle = ytMediaFilesObj.snippet.title;
+                    hisChannel = ytMediaFilesObj.snippet.channelTitle;
+                    hisDuration = ytMediaFilesObj.contentDetails.duration;
+                    hisThumb = ytMediaFilesObj.snippet.thumbnails.medium.url;
+
+                    class SaveToHistory extends AsyncTask<Void, Void, Void> {
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+
+                            HistoryVids his = new HistoryVids();
+                            his.setHvId(hisId);
+                            his.setHvChannelName(hisChannel);
+                            his.setHvTitle(hisTitle);
+                            his.setHvDuration(hisDuration);
+                            his.setHvThumbnail(hisThumb);
+
+                            HistoryVidsDatabase.getHistoryDbInstance(context.getApplicationContext())
+                                    .historyVidsDao()
+                                    .insertToHistory(his);
+                            Log.d(TAG, "doInBackground: added to history");
+
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void unused) {
+                            super.onPostExecute(unused);
+
+                            Log.d(TAG, "doInBackground: videos in db successful");
+                        }
+                    }
+
+                    SaveToHistory sth = new SaveToHistory();
+                    sth.execute();
 
                     Intent intent = new Intent(context, YtVidDetailActivity.class);
                     intent.putExtra("videoId", ytMediaFilesObj.id);
-                    intent.putExtra("vidTitle",ytMediaFilesObj.snippet.title);
+                    intent.putExtra("vidTitle", ytMediaFilesObj.snippet.title);
                     intent.putExtra("channelName", ytMediaFilesObj.snippet.channelTitle);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
-
-
-
-
                 }
             });
         }
+    }
+    public String getChannelLogo(String chnlId) {
+        String chUrl =  YoutubeConfig.CH_Middle
+                + YoutubeConfig.ch
+                + chnlId + YoutubeConfig.KEY;
+        String[] logoUrl=new String[1];
+
+        Log.d(TAG, "getChannelLogo: searching logo for"+ chnlId);
+        Call<PopularResponse> call = RetrofitClientInstance.getRetrofitInstance().
+                create(ApiCallInterface.class).getChannelLogo(chUrl);
+        call.enqueue(new Callback<PopularResponse>() {
+            @Override
+            public void onResponse(Call<PopularResponse> call, Response<PopularResponse> response) {
+                PopularResponse popularResponse = response.body();
+
+                if(popularResponse != null){
+
+                    logoUrl[0] = popularResponse.items.get(0).snippet.thumbnails.dft.url;
+                    Log.d(TAG, "found_logo----->\n "+logoUrl[0]);
+
+                    if(popularResponse.items.get(0).snippet.thumbnails != null) {
+                        ThumbnailType thType = popularResponse.items.get(0).snippet.thumbnails.dft;
+                        if (thType == null)
+                            thType = popularResponse.items.get(0).snippet.thumbnails.medium;
+                        if (thType == null)
+                            thType = popularResponse.items.get(0).snippet.thumbnails.high;
+
+
+                        logoUrl[0] = thType.url;
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PopularResponse> call, Throwable t) {
+                Log.d(TAG, "onResponse: unable to Search video");
+            }
+        });
+        Log.d(TAG, "found_logo----->\n "+logoUrl[0]);
+        return logoUrl[0];
     }
 }

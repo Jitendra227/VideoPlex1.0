@@ -5,16 +5,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -22,10 +19,9 @@ import com.google.android.youtube.player.FragmentYtubePlayer;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.jitendra.videoplex10.Adapters.WatchLaterAdapter;
-import com.jitendra.videoplex10.Model.YoutubeModel.ThumbnailType;
 import com.jitendra.videoplex10.R;
-import com.jitendra.videoplex10.VidDatabase.WchLaterDatabase;
-import com.jitendra.videoplex10.VidDatabase.WchVideos;
+import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchLaterDatabase;
+import com.jitendra.videoplex10.VidDatabase.WatchLaterDb.WchVideos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +29,6 @@ import java.util.List;
 public class WatchLaterActivity extends AppCompatActivity {
 
     public static final String TAG = "WatchLaterVideos";
-
     BottomNavigationView bottomNavigationView;
     private WatchLaterAdapter watchLaterAdapter;
     private RecyclerView recyclerView;
@@ -93,7 +88,6 @@ public class WatchLaterActivity extends AppCompatActivity {
             }
         });
 
-       // bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setSelectedItemId(R.id.library_icon);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener(){
@@ -123,7 +117,6 @@ public class WatchLaterActivity extends AppCompatActivity {
 
     }
 
-
     class DeleteSavedVideos extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -141,7 +134,6 @@ public class WatchLaterActivity extends AppCompatActivity {
         }
     }
 
-
     private void getSavedVideos() {
         class GetAllWatchLaterVideos extends AsyncTask<Void, Void, List<WchVideos>> {
 
@@ -151,7 +143,6 @@ public class WatchLaterActivity extends AppCompatActivity {
                         .getDbInstance(getApplicationContext())
                         .wchVideosDao()
                         .getAll();
-
                 return wchVideosList;
             }
 
@@ -166,7 +157,6 @@ public class WatchLaterActivity extends AppCompatActivity {
         GetAllWatchLaterVideos gv = new GetAllWatchLaterVideos();
         gv.execute();
     }
-
 
     private void playSavedVideos() {
         final YouTubeInitializationResult result = YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);

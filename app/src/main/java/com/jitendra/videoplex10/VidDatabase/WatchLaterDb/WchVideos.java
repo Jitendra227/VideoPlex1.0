@@ -1,10 +1,11 @@
-package com.jitendra.videoplex10.VidDatabase;
+package com.jitendra.videoplex10.VidDatabase.WatchLaterDb;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(indices = {@Index(value = {"id"}, unique = true)})
 public class WchVideos {
 
         @PrimaryKey(autoGenerate = true)
